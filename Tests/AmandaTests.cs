@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using AmandaWS;
 using NUnit.Framework;
 using FluentAssertions;
 
@@ -14,14 +14,21 @@ namespace Tests
         [Test]
         public static void Amanda_Should_Initialize()
         {
-            
+            Action init = () => new Amanda();
+            init.ShouldNotThrow();
+        }
+
+        [Test]
+        public static void Amanda_Should_Initialize_With_Root_Route()
+        {
+
         }
 
 
         [Test]
         public static void Amanda_Should_Expose_Method()
         {
-            
+
         }
 
         [Test]
@@ -38,18 +45,6 @@ namespace Tests
 
         [Test]
         public static void Amanda_Should_Expose_Method_With_Handler()
-        {
-
-        }
-
-        [Test]
-        public static void Amanda_Should_Expose_Before_Handler()
-        {
-
-        }
-
-        [Test]
-        public static void Amanda_Should_Expose_After_Handler()
         {
 
         }

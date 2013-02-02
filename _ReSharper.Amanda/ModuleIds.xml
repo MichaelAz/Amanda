@@ -1,4 +1,6 @@
 <Modules>
   <Module PersistentId="29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456" ModuleId="Amanda" />
   <Module PersistentId="BE582A0F-2151-445A-99DD-778E134BF240" ModuleId="Tests" />
+  <Module PersistentId="83782F9F-AB9C-49D9-B510-F05A67405057" ModuleId="WebTests" />
+  <Module PersistentId="C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12" ModuleId="WebTests_1" />
 </Modules>

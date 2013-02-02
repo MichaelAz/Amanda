@@ -1,0 +1,6 @@
+c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Amanda\bin\Debug\Amanda.dll
+c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Amanda\bin\Debug\Amanda.pdb
+c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Amanda\bin\Debug\Nancy.dll
+c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Amanda\obj\Debug\ResolveAssemblyReference.cache
+c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Amanda\obj\Debug\Amanda.dll
+c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Amanda\obj\Debug\Amanda.pdb
