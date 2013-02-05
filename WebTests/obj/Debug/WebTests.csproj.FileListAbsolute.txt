@@ -4,13 +4,8 @@ c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\Amanda.d
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\Nancy.dll
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\Nancy.Hosting.Aspnet.dll
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\Tests.exe
-c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\nunit.framework.dll
-c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\FluentAssertions.dll
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\Amanda.pdb
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\Tests.pdb
-c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\nunit.framework.xml
-c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\FluentAssertions.pdb
-c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\bin\FluentAssertions.xml
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\obj\Debug\ResolveAssemblyReference.cache
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\obj\Debug\WebTests.dll
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\WebTests\obj\Debug\WebTests.pdb

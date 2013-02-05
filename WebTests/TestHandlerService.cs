@@ -12,9 +12,10 @@ namespace WebTests
     {
         public TestHandlerService()
         {
-            this.Exposes(TestHandler.Method).WithRoute("/NotTheDefault/RouteToMethod");
-            this.Exposes(TestHandler.Method).WithVerb("Post");
-            this.Start("/apy");
+            var s = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var ss = s.Serialize(new ComplexClass() {Num = 3, Str = "ShoopDaWhoop"});
+            this.ExposesWithReturn<int, string, string>((new ComplexClass()).ConW2P);
+            this.Start();
         }
     }
 }

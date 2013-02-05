@@ -15,5 +15,47 @@ namespace Tests
         {
             MethodRan = true;
         }
+
+        public static void MethodWithParam(string hey)
+        {
+            
+        }
+
+        public static void MethodWith2Param(string hey, int num)
+        {
+
+        }
+
+        public static void MethodWithComplexParam(ComplexClass c)
+        {
+            
+        }
+
+        public static void MethodWithMixedParams(string str, ComplexClass c)
+        {
+            
+        }
+    }
+
+    public class ComplexClass
+    {
+        public int Num { get; set; }
+
+        public string Str { get; set; }
+
+        public void ConWOP()
+        {
+            string t = Num + Str;
+        }
+
+        public void ConW1P(int num)
+        {
+            
+        }
+
+        public string ConW2P(int num, string str)
+        {
+            return num + str;
+        }
     }
 }

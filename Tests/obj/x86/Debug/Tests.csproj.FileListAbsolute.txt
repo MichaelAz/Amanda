@@ -8,7 +8,5 @@ c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\bin\Debug\nunit
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\obj\x86\Debug\ResolveAssemblyReference.cache
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\obj\x86\Debug\Tests.exe
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\obj\x86\Debug\Tests.pdb
-c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\bin\Debug\Amanda.dll
-c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\bin\Debug\Amanda.pdb
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\bin\Debug\Nancy.dll
 c:\users\zeev\documents\visual studio 2010\Projects\Amanda\Tests\bin\Debug\Nancy.Hosting.Self.dll
