@@ -37,7 +37,7 @@ namespace Tests
         }
     }
 
-    public class ComplexClass
+    public class ComplexClass   
     {
         public int Num { get; set; }
 

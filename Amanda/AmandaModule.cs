@@ -9,18 +9,21 @@ using System.Web.Script.Serialization;
 using Nancy;
 using Nancy.ModelBinding;
 
-namespace AmandaWS
+namespace Amanda
 {
-    public class Amanda : NancyModule
+    public class AmandaModule : NancyModule
     {
         public List<EndpointBuilder> builders;
 
         public string RootRoute { get; set; }
 
-        public Amanda()
+        internal string ReWrittenBody { get; set; }
+
+        public AmandaModule()
         {
             RootRoute = "/api";
             builders = new List<EndpointBuilder>();
+            After.AddItemToEndOfPipeline(x => x.Response.Headers.Add("Access-Control-Allow-Origin", "*"));
         }
 
         public EndpointBuilder Exposes(Action method)
@@ -98,7 +101,8 @@ namespace AmandaWS
                 Method = method,
                 Verb = verb,
                 Route = "/" + method.Method.Name,
-                Action = action
+                Action = action,
+                Module = this
             };
 
             builders.Add(builder);
@@ -145,7 +149,7 @@ namespace AmandaWS
             else
             {
                 var jss = new JavaScriptSerializer();
-                var bodyparams = jss.Deserialize<dynamic>(this.Request.Body.AsString());
+                var bodyparams = jss.Deserialize<dynamic>(ReWrittenBody);
 
                 finalparams = (from mp in methparams
                                where bodyparams[mp.Name] != null
