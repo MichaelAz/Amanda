@@ -80,7 +80,7 @@ namespace Amanda
                                                                return null;
                                                            }
 
-                                                           string s = ctx.Request.Body.AsString();
+                                                           string s = Module.ReWrittenBody ?? ctx.Request.Body.AsString();
 
                                                            if (s.Length > 0)
                                                            {

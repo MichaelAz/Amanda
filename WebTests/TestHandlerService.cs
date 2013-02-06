@@ -12,12 +12,9 @@ namespace WebTests
     {
         public TestHandlerService()
         {
-            this.Exposes<TestHandler, int>(TestHandler.MethodWith2Param)
-                .WithVerb(Verb.Post)
-                .WithBlakcList<TestHandler>("Str");
-
-            this.Exposes<TestHandler, int>(TestHandler.Meth2Par);
-            this.Exposes(new System.Threading.ThreadStart(TestHandler.Meth2Par));
+            this.Exposes<TestHandler, AnotherTest>(TestHandler.Meth2Par)
+                .WithBlakcList<TestHandler>("Str")
+                .WithBlakcList<AnotherTest>("Num");
             this.Start();
         }
 
@@ -30,10 +27,15 @@ namespace WebTests
                 
             }
 
-            public static void Meth2Par()
+            public static void Meth2Par(TestHandler t, AnotherTest n)
             {
                 
             }
+        }
+
+        public class AnotherTest
+        {
+            public int Num { get; set; }
         }
     }
 }
