@@ -5,9 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-using System.Web.Script.Serialization;
 using Nancy;
 using Nancy.ModelBinding;
+using Nancy.Json;
 
 namespace Amanda
 {
@@ -136,8 +136,8 @@ namespace Amanda
         {
             var methparams = method.Method.GetParameters();
             IEnumerable<object> finalparams;
-
-            if (method.Method.GetParameters().All(p => p.ParameterType.IsBasic()))
+            var s = this.Request.Method;
+            if (Request.Method == "GET")
             {
                 var queryparams = (IDictionary<string, dynamic>)this.Request.Query;
 
@@ -148,12 +148,19 @@ namespace Amanda
             }
             else
             {
+                //var jss = new JavaScriptSerializer();
+                //var bodyparams = jss.DeserializeObject(ReWrittenBody);
+
+                //finalparams = (from mp in methparams
+                //               where bodyparams.GetType().GetProperty(mp.Name).GetValue(bodyparams, null) != null
+                //               select jss.DeserializeObject(bodyparams.GetType().GetProperty(mp.Name).GetValue(bodyparams, null) as string)).ToList(); //jss.Deserialize(jss.Serialize(bodyparams[mp.Name]), mp.ParameterType)).Cast<object>().ToList();
+
                 var jss = new JavaScriptSerializer();
-                var bodyparams = jss.Deserialize<dynamic>(ReWrittenBody);
+                var bodyparams = jss.Deserialize<dynamic>(ReWrittenBody ?? Request.Body.AsString());
 
                 finalparams = (from mp in methparams
                                where bodyparams[mp.Name] != null
-                               select jss.Deserialize(jss.Serialize(bodyparams[mp.Name]), mp.ParameterType)).Cast<object>().ToList();
+                               select Extensions.Deserialize(jss, jss.Serialize(bodyparams[mp.Name]), mp.ParameterType)).ToList();
             }
 
             return finalparams;

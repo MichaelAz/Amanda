@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using Nancy.Json;
 
 namespace Amanda
 {
@@ -160,5 +161,16 @@ namespace Amanda
                 return null;
             }
         }
+
+        public static object Deserialize(this JavaScriptSerializer jss, string s, Type t)
+        {
+            var genericMethod = jss.GetType().GetMethod("Deserialize");
+            var nonGenericMethod = genericMethod.MakeGenericMethod(t);
+            return nonGenericMethod.Invoke(jss, new object[]
+                                                    {
+                                                        s
+                                                    });
+        }
+        
     }
 }

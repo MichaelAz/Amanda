@@ -3,30 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amanda", "Amanda\Amanda.csproj", "{29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{BE582A0F-2151-445A-99DD-778E134BF240}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTests", "WebTests\WebTests.csproj", "{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UserAPI - Nancy", "..\TechemProjectMin\UserAPI - Nancy\", "{265A3256-D7CB-475F-AE11-9C8A616BB1A5}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456}|Amanda.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/UserAPI - Nancy"
-		Debug.AspNetCompiler.PhysicalPath = "..\TechemProjectMin\UserAPI - Nancy\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\UserAPI - Nancy\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/UserAPI - Nancy"
-		Release.AspNetCompiler.PhysicalPath = "..\TechemProjectMin\UserAPI - Nancy\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\UserAPI - Nancy\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "30890"
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,16 +25,6 @@ Global
 		{29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456}.Release|x86.ActiveCfg = Release|Any CPU
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Debug|x86.ActiveCfg = Debug|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Debug|x86.Build.0 = Debug|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Release|Any CPU.ActiveCfg = Release|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Release|Mixed Platforms.Build.0 = Release|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Release|x86.ActiveCfg = Release|x86
-		{BE582A0F-2151-445A-99DD-778E134BF240}.Release|x86.Build.0 = Release|x86
 		{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -68,16 +35,6 @@ Global
 		{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}.Release|x86.ActiveCfg = Release|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{265A3256-D7CB-475F-AE11-9C8A616BB1A5}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
