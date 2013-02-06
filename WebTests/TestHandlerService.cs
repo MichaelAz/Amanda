@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -16,7 +17,7 @@ namespace WebTests
                 .WithBlakcList<TestHandler>("Str");
 
             this.Exposes<TestHandler, int>(TestHandler.Meth2Par);
-
+            this.Exposes(new System.Threading.ThreadStart(TestHandler.Meth2Par));
             this.Start();
         }
 
@@ -29,7 +30,7 @@ namespace WebTests
                 
             }
 
-            public static void Meth2Par(TestHandler str, int num)
+            public static void Meth2Par()
             {
                 
             }

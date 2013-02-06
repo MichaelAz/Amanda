@@ -725,7 +725,7 @@ namespace Amanda
         /// </summary>
         /// <param name="d">The method to expose</param>
         /// <returns>The endpoint builder associated with the method</returns>
-        public EndpointBuilder ExposesDelegate(MulticastDelegate d)
+        public EndpointBuilder Exposes(MulticastDelegate d)
         {
             if (d.Method.ReturnType == typeof(void))
             {
