@@ -1,7 +1,7 @@
 Amanda
 ======
 
-Amanda is a library that makes exposing an API via Nancy even easier
+Amanda is a library that makes exposing an API via Nancy even easier. [Get it on NuGet](https://nuget.org/packages/Amanda/)
 
 Easier Than Nancy?! No way!
 --------------------------------------------
