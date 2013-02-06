@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12}</ProjectGuid>
+    <ProjectGuid>{745C5294-FA34-4C46-AC48-C2C42F202AF3}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebTests</RootNamespace>
-    <AssemblyName>WebTests</AssemblyName>
+    <RootNamespace>Amanda_Sample_Project</RootNamespace>
+    <AssemblyName>Amanda_Sample_Project</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Amanda">
+      <HintPath>..\packages\Amanda.0.1.0\lib\Amanda.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.15.3\lib\net40\Nancy.dll</HintPath>
@@ -68,17 +71,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuisnesLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestHandlerService.cs" />
+    <Compile Include="SampleModule.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Amanda\Amanda.csproj">
-      <Project>{29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456}</Project>
-      <Name>Amanda</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -88,7 +87,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>33982</DevelopmentServerPort>
+          <DevelopmentServerPort>15534</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

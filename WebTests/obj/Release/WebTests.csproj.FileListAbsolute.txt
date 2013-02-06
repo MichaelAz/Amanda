@@ -1,9 +1,0 @@
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\bin\WebTests.dll
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\bin\WebTests.pdb
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\bin\Amanda.dll
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\bin\Nancy.dll
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\bin\Nancy.Hosting.Aspnet.dll
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\bin\Amanda.pdb
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\obj\Release\ResolveAssemblyReference.cache
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\obj\Release\WebTests.dll
-C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\WebTests\obj\Release\WebTests.pdb
