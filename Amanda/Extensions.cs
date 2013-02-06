@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+
 using Nancy.Json;
 
 namespace Amanda
@@ -70,6 +71,12 @@ namespace Amanda
             return (new StreamReader(s, encoding, detectEncodingFromByteOrderMarks, bufferSize)).ReadToEnd();
         }
 
+        /// <summary>
+        /// Checks whether a type is a "basic" type as per the C# specification
+        /// or a nullable version thereof
+        /// </summary>
+        /// <param name="t">The type to check</param>
+        /// <returns>Whether the type is a basic type</returns>
         public static bool IsBasic(this Type t)
         {
             return  t == typeof(bool)        ||
@@ -102,6 +109,11 @@ namespace Amanda
                     t == typeof(ushort?);
         }
 
+        /// <summary>
+        /// Returns the default value for a type, much like the default keyword
+        /// </summary>
+        /// <param name="t">The type to get a default value for</param>
+        /// <returns>The defualt value for the type</returns>
         public static dynamic Default(this Type t)
         {
             if (t == typeof (bool))
@@ -162,6 +174,14 @@ namespace Amanda
             }
         }
 
+        /// <summary>
+        /// An extension method that allows the Nancy JavaScriptSerializer to generically
+        /// deserialize JSON to a type given at runtime
+        /// </summary>
+        /// <param name="jss">The JavaScriptSerializer which preforms the conversion</param>
+        /// <param name="s">The JSON string to deserialize</param>
+        /// <param name="t">The type to deserialzie to</param>
+        /// <returns>An instance of the type deserialized from the JSON string</returns>
         public static object Deserialize(this JavaScriptSerializer jss, string s, Type t)
         {
             var genericMethod = jss.GetType().GetMethod("Deserialize");
@@ -170,7 +190,6 @@ namespace Amanda
                                                     {
                                                         s
                                                     });
-        }
-        
+        }    
     }
 }

@@ -1,28 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Web.Script.Serialization;
-using Nancy.IO;
+using System.Collections;
+using System.Collections.Generic;
+using Nancy.Json;
 
 namespace Amanda
 {
+    /// <summary>
+    /// A class that provides a fluent interface to customizing how methods are exposed
+    /// </summary>
     public class EndpointBuilder
     {
+        /// <summary>
+        /// The method associated with the endpoint
+        /// </summary>
         internal MulticastDelegate Method { get; set; }
+
+        /// <summary>
+        /// The route associated with the endpoint
+        /// </summary>
         internal string Route { get; set; }
+
+        /// <summary>
+        /// The action, or route handler, assoicated with the endpoint
+        /// </summary>
         internal Func<dynamic, dynamic> Action { get; set; }
+
+        /// <summary>
+        /// The berb associated with the endpoint
+        /// </summary>
         internal Verb Verb { get; set; }
+
+        /// <summary>
+        /// The module associated with the endpoint
+        /// </summary>
         internal AmandaModule Module { get; set; }
 
+        /// <summary>
+        /// Changes the route on which the endpoint is ran
+        /// </summary>
+        /// <param name="route">The route to run the endpoint on</param>
+        /// <returns>The EndpointBuilder the method was ran on</returns>
         public EndpointBuilder WithRoute(string route)
         {
             Route = route;
 
             return this;
         }
-        
+
+        /// <summary>
+        /// Changes the verb the endpoint is ran with
+        /// </summary>
+        /// <param name="verb">The verb to run the endpoint with</param>
+        /// <returns>The EndpointBuilder the method was ran on</returns>
         public EndpointBuilder WithVerb(Verb verb)
         {
             if (verb == Verb.Get && !Method.Method.GetParameters().All(p => p.ParameterType.IsBasic()))
@@ -35,10 +65,21 @@ namespace Amanda
             return this;
         }
 
+        /// <summary>
+        /// Defines a blacklist for one of the complex parameters associated with the edpoint method
+        /// </summary>
+        /// <typeparam name="T">The type of the complex parameters who's properties we want to blacklist</typeparam>
+        /// <param name="props">The properties on the type T to blacklist</param>
+        /// <returns>The EndpointBuilder the method was ran on</returns>
         public EndpointBuilder WithBlakcList<T>(params string[] props)
         {
             Module.Before.AddItemToStartOfPipeline(ctx =>
                                                        {
+                                                           if (!ctx.Request.Path.Contains(Route))
+                                                           {
+                                                               return null;
+                                                           }
+
                                                            string s = ctx.Request.Body.AsString();
 
                                                            if (s.Length > 0)
@@ -47,13 +88,17 @@ namespace Amanda
 
                                                                var ds = jss.Deserialize<dynamic>(s);
 
+                                                               // Selects the parameters on the method which are of the type T
                                                                var parameters = from mp in Method.Method.GetParameters()
                                                                                 where mp.ParameterType == typeof (T)
                                                                                 select mp;
 
+                                                               // Transforms the paramaters of the method to their associated values in the deserialized body
                                                                var ls =
                                                                    parameters.Select(parameter => ds[parameter.Name]);
 
+                                                               // Sets the bllacklisted properties to their default value, ignoring the
+                                                               // value passed in
                                                                foreach (var elem in ls)
                                                                {
                                                                    foreach (var prop in props)
@@ -64,30 +109,8 @@ namespace Amanda
                                                                }
 
                                                                this.Module.ReWrittenBody = jss.Serialize(ds);
-
-                                                               //var ser = ls.Select(param => jss.Serialize(param));
-                                                               //var deser = ser.Select(sers => jss.Deserialize<T>(sers)).Cast<T>();
-
-                                                               //var elems = new List<T>();
-
-                                                               //foreach (var prop in props)
-                                                               //{
-                                                               //    foreach (var elem in deser)
-                                                               //    {
-                                                               //        var locProp = elem.GetType().GetProperty(prop);
-                                                               //        locProp.SetValue(elem, locProp.PropertyType.Default(), null);
-
-                                                               //        elems.Add(elem);
-                                                               //    }
-                                                               //}
                                                            }
 
-                                                           //ctx.Request.Body.Flush();
-                                                           //ctx.Request.Body.Write(
-                                                           //    Encoding.Unicode.GetBytes(s.ToArray()), 0,
-                                                           //    Encoding.Unicode.GetBytes(s.ToArray()).Count());
-
-                                                           //var ss = ctx.Request.Body.AsString();
                                                            return null;
                                                        });
 
