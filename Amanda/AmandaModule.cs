@@ -13,9 +13,9 @@ namespace Amanda
 {
     public class AmandaModule : NancyModule
     {
-        public List<EndpointBuilder> builders;
+        internal List<EndpointBuilder> builders;
 
-        public string RootRoute { get; set; }
+        internal string RootRoute { get; set; }
 
         internal string ReWrittenBody { get; set; }
 
@@ -25,6 +25,8 @@ namespace Amanda
             builders = new List<EndpointBuilder>();
             After.AddItemToEndOfPipeline(x => x.Response.Headers.Add("Access-Control-Allow-Origin", "*"));
         }
+
+        #region Exposes
 
         public EndpointBuilder Exposes(Action method)
         {
@@ -50,19 +52,172 @@ namespace Amanda
             return ActionHelper(method);
         }
 
-        public EndpointBuilder ExposesWithReturn<T>(Func<T> method)
+        public EndpointBuilder Exposes<T1, T2, T3, T4>(Action<T1, T2, T3, T4> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5>(Action<T1, T2, T3, T4, T5> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6>(Action<T1, T2, T3, T4, T5, T6> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7>(Action<T1, T2, T3, T4, T5, T6, T7> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8>(Action<T1, T2, T3, T4, T5, T6, T7, T8> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> method)
+        {
+            return ActionHelper(method);
+        }
+
+        public EndpointBuilder Exposes<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(Action<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> method)
+        {
+            return ActionHelper(method);
+        }
+
+        #endregion
+
+        #region ExposesWithReturn
+
+        public EndpointBuilder ExposesWithReturn<TResult>(Func<TResult> method)
         {
             return FuncHelper(method);
         }
 
-        public EndpointBuilder ExposesWithReturn<T1, T2>(Func<T1, T2> method)
+        public EndpointBuilder ExposesWithReturn<T1, TResult>(Func<T1, TResult> method)
         {
             return FuncHelper(method);
         }
 
-        public EndpointBuilder ExposesWithReturn<T1, T2, T3>(Func<T1, T2, T3> method)
+        public EndpointBuilder ExposesWithReturn<T1, T2, TResult>(Func<T1, T2, TResult> method)
         {
             return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, TResult>(Func<T1, T2, T3, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, TResult>(Func<T1, T2, T3, T4, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, TResult>(Func<T1, T2, T3, T4, T5, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, TResult>(Func<T1, T2, T3, T4, T5, T6, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        public EndpointBuilder ExposesWithReturn<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TResult>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TResult> method)
+        {
+            return FuncHelper(method);
+        }
+
+        #endregion
+
+        public EndpointBuilder ExposesDelegate(MulticastDelegate d)
+        {
+            if (d.Method.ReturnType == typeof(void))
+            {
+                return ActionHelper(d);
+            }
+            else
+            {
+                return FuncHelper(d);
+            }
         }
 
         public void Start()
@@ -92,23 +247,7 @@ namespace Amanda
             Start();
         }
 
-        private EndpointBuilder ExpositionHelper(MulticastDelegate method, Func<dynamic, dynamic> action )
-        {
-            Verb verb = method.Method.GetParameters().All(p => p.ParameterType.IsBasic()) ? Verb.Get : Verb.Post;
-
-            var builder = new EndpointBuilder()
-            {
-                Method = method,
-                Verb = verb,
-                Route = "/" + method.Method.Name,
-                Action = action,
-                Module = this
-            };
-
-            builders.Add(builder);
-
-            return builder;
-        }
+        #region Helpers
 
         private EndpointBuilder ActionHelper(MulticastDelegate method)
         {
@@ -148,13 +287,6 @@ namespace Amanda
             }
             else
             {
-                //var jss = new JavaScriptSerializer();
-                //var bodyparams = jss.DeserializeObject(ReWrittenBody);
-
-                //finalparams = (from mp in methparams
-                //               where bodyparams.GetType().GetProperty(mp.Name).GetValue(bodyparams, null) != null
-                //               select jss.DeserializeObject(bodyparams.GetType().GetProperty(mp.Name).GetValue(bodyparams, null) as string)).ToList(); //jss.Deserialize(jss.Serialize(bodyparams[mp.Name]), mp.ParameterType)).Cast<object>().ToList();
-
                 var jss = new JavaScriptSerializer();
                 var bodyparams = jss.Deserialize<dynamic>(ReWrittenBody ?? Request.Body.AsString());
 
@@ -165,5 +297,25 @@ namespace Amanda
 
             return finalparams;
         }
+
+        private EndpointBuilder ExpositionHelper(MulticastDelegate method, Func<dynamic, dynamic> action)
+        {
+            Verb verb = method.Method.GetParameters().All(p => p.ParameterType.IsBasic()) ? Verb.Get : Verb.Post;
+
+            var builder = new EndpointBuilder()
+            {
+                Method = method,
+                Verb = verb,
+                Route = "/" + method.Method.Name,
+                Action = action,
+                Module = this
+            };
+
+            builders.Add(builder);
+
+            return builder;
+        }
+
+        #endregion
     }
 }
