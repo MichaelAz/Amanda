@@ -42,6 +42,8 @@ How does Amanda do routing?
 
 How do I customize my APIs?
 
+How do I consume aforementioned APIs?
+
 And hey, what's with the name anyway?
 
 All that and MORE in the project wiki. See ya there!
