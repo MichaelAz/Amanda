@@ -759,6 +759,8 @@ namespace Amanda
 
                 routeBuilder[builder.Route] = builder.Action;
             }
+
+            RegisterMetadataRoute();
         }
 
         /// <summary>
@@ -802,7 +804,9 @@ namespace Amanda
             {
                 var finalparams = ParamHelper(method);
 
-                return method.Method.Invoke(method.Target, finalparams.ToArray());
+                var jss = new JavaScriptSerializer();
+
+                return jss.Serialize(method.Method.Invoke(method.Target, finalparams.ToArray()));
             });
         }
 
@@ -870,6 +874,25 @@ namespace Amanda
             builders.Add(builder);
 
             return builder;
+        }
+
+        private void RegisterMetadataRoute()
+        {
+            var metdataProviders = from builder in builders
+                                   select new
+                                              {
+                                                  Verb = builder.Verb.ToString("g"),
+                                                  Route = builder.Route,
+                                                  Name = builder.Method.Method.Name,
+                                                  Parameters = builder.Method.Method.GetParameters().ToDictionary(p => p.Name,
+                                                                                          p => p.ParameterType)
+                                              };
+
+            Get[RootRoute + "/metadata"] = _ =>
+                                               {
+                                                   var jss = new JavaScriptSerializer();
+                                                   return jss.Serialize(metdataProviders);
+                                               };
         }
 
         #endregion
