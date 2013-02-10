@@ -806,7 +806,7 @@ namespace Amanda
 
                 var jss = new JavaScriptSerializer();
 
-                return method.Method.ReturnType.IsBasic() ? method.Method.Invoke(method.Target, finalparams.ToArray()) : jss.Serialize(method.Method.Invoke(method.Target, finalparams.ToArray()));
+                return method.Method.ReturnType.IsBasic() ? method.Method.Invoke(method.Target, finalparams.ToArray()).ToString() : jss.Serialize(method.Method.Invoke(method.Target, finalparams.ToArray()));
             });
         }
 
@@ -886,7 +886,7 @@ namespace Amanda
                                                   Name = builder.Method.Method.Name,
                                                   Parameters = builder.Method.Method.GetParameters().ToDictionary(p => p.Name,
                                                                                           p => p.ParameterType.IsBasic() ? p.ParameterType.AssemblyQualifiedName : String.Empty),
-                                                  Result = builder.Method.Method.ReturnType.Name
+                                                  Result = builder.Method.Method.ReturnType.AssemblyQualifiedName
                                               };
 
             var lookupMetadataProviders = metdataProviders.ToLookup(e => e.Name);

@@ -28,9 +28,14 @@ namespace Amanda.Client
 
         public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)
         {
-            if (providers.ContainsKey(binder.Name))
+            return InvokeHelper(binder.Name, args, out result);
+        }
+
+        private bool InvokeHelper(string methodName, object[] args, out object result)
+        {
+            if (providers.ContainsKey(methodName))
             {
-                var provider = providers[binder.Name].First();
+                var provider = providers[methodName].First();
 
                 if (provider.Verb == "Get")
                 {
@@ -61,7 +66,14 @@ namespace Amanda.Client
                     }
                     else
                     {
-                        result = res;
+                        if (Type.GetType(provider.Result).IsBasic())
+                        {
+                            result = Convert.ChangeType(res, Type.GetType(provider.Result));
+                        }
+                        else
+                        {
+                            result = (new JavaScriptSerializer()).Deserialize<dynamic>(res).ToExpando();
+                        }
                     }
 
                     return true;
@@ -77,13 +89,13 @@ namespace Amanda.Client
                     var res = client.UploadString(serviceUri + provider.Route,
                                                   (new JavaScriptSerializer()).Serialize(dict));
 
-                    if (res == String.Empty)
+                    if (Type.GetType(provider.Result).IsBasic())
                     {
-                        result = null;
+                        result = Convert.ChangeType(res, Type.GetType(provider.Result));
                     }
                     else
                     {
-                        result = res;
+                        result = ((Dictionary<string, object>)(new JavaScriptSerializer()).Deserialize<dynamic>(res)).ToExpando();
                     }
 
                     return true;

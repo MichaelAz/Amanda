@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmandaClient.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="MetadataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

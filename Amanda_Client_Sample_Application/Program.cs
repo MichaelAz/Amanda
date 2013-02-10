@@ -12,8 +12,11 @@ namespace Amanda_Client_Sample_Application
         static void Main(string[] args)
         {
             dynamic client = new AmandaClient("http://localhost:15534/api");
-            client.DoNothingForFactor(1.5, 1);
-            client.GetUsersUsername(new {Username = "testUser", Password = "leettleeto"});
+            var res = client.SpliceUsers(new {ID = 1, Username = "shoopi", Password = "spliced"},
+                                         new {ID = 2, Username = "whoopi", Password = "pass"});
+            Console.WriteLine(res.ID);
+            Console.WriteLine(res.Username);
+            Console.WriteLine(res.Password);
         }
     }
 }
