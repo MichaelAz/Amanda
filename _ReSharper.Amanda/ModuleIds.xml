@@ -1,6 +1,6 @@
 <Modules>
   <Module PersistentId="29FA98F7-1F4A-4E5A-AF54-4FD4DF0BF456" ModuleId="Amanda" />
-  <Module PersistentId="BE582A0F-2151-445A-99DD-778E134BF240" ModuleId="Tests" />
-  <Module PersistentId="C52B0E69-B8D9-4EB0-82A2-994F4F4C8C12" ModuleId="WebTests_1" />
   <Module PersistentId="745C5294-FA34-4C46-AC48-C2C42F202AF3" ModuleId="Amanda_Sample_Project" />
+  <Module PersistentId="F3B5182A-BE06-4516-B81D-067D9192788E" ModuleId="Aamanda.Client" />
+  <Module PersistentId="6EDAC58E-F04F-4B59-84D2-0A83E2FE78E5" ModuleId="Amanda_Client_Sample_Application" />
 </Modules>

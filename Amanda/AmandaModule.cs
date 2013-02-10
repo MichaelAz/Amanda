@@ -742,6 +742,8 @@ namespace Amanda
         /// </summary>
         public void Start()
         {
+            RegisterMetadataRoute();
+
             foreach (var builder in builders)
             {
                 builder.Route = RootRoute + builder.Route;
@@ -759,8 +761,6 @@ namespace Amanda
 
                 routeBuilder[builder.Route] = builder.Action;
             }
-
-            RegisterMetadataRoute();
         }
 
         /// <summary>
@@ -806,7 +806,7 @@ namespace Amanda
 
                 var jss = new JavaScriptSerializer();
 
-                return jss.Serialize(method.Method.Invoke(method.Target, finalparams.ToArray()));
+                return method.Method.ReturnType.IsBasic() ? method.Method.Invoke(method.Target, finalparams.ToArray()) : jss.Serialize(method.Method.Invoke(method.Target, finalparams.ToArray()));
             });
         }
 
@@ -879,19 +879,22 @@ namespace Amanda
         private void RegisterMetadataRoute()
         {
             var metdataProviders = from builder in builders
-                                   select new
+                                   select new MetadataProvider()
                                               {
                                                   Verb = builder.Verb.ToString("g"),
                                                   Route = builder.Route,
                                                   Name = builder.Method.Method.Name,
                                                   Parameters = builder.Method.Method.GetParameters().ToDictionary(p => p.Name,
-                                                                                          p => p.ParameterType)
+                                                                                          p => p.ParameterType.IsBasic() ? p.ParameterType.AssemblyQualifiedName : String.Empty),
+                                                  Result = builder.Method.Method.ReturnType.Name
                                               };
+
+            var lookupMetadataProviders = metdataProviders.ToLookup(e => e.Name);
 
             Get[RootRoute + "/metadata"] = _ =>
                                                {
                                                    var jss = new JavaScriptSerializer();
-                                                   return jss.Serialize(metdataProviders);
+                                                   return jss.Serialize(lookupMetadataProviders);
                                                };
         }
 
