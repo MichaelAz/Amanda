@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using System.Net;
 using System.Dynamic;
 using System.Web.Script.Serialization;
@@ -72,7 +71,16 @@ namespace Amanda.Client
                         }
                         else
                         {
-                            result = (new JavaScriptSerializer()).Deserialize<dynamic>(res).ToExpando();
+                            var jss = new JavaScriptSerializer();
+
+                            try
+                            {
+                                result = Extensions.ToExpando(jss.Deserialize<dynamic>(res));
+                            }
+                            catch (Exception)
+                            {
+                                result = jss.Deserialize<List<dynamic>>(res).Select(e => Extensions.ToExpando(e)).ToList();
+                            }
                         }
                     }
 
@@ -95,7 +103,16 @@ namespace Amanda.Client
                     }
                     else
                     {
-                        result = ((Dictionary<string, object>)(new JavaScriptSerializer()).Deserialize<dynamic>(res)).ToExpando();
+                        var jss = new JavaScriptSerializer();
+
+                        try
+                        {
+                            result = Extensions.ToExpando(jss.Deserialize<dynamic>(res));
+                        }
+                        catch (Exception)
+                        {
+                            result = jss.Deserialize<List<dynamic>>(res).Select(e => Extensions.ToExpando(e)).ToList();
+                        }
                     }
 
                     return true;

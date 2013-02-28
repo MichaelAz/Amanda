@@ -4,7 +4,7 @@ using System.Dynamic;
 using System.IO;
 using System.Text;
 
-namespace Amanda
+namespace Amanda.Client
 {
     /// <summary>
     /// A collection of extensions methods used in the BuisnesLogic namespace

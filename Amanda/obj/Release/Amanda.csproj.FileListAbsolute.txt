@@ -4,3 +4,9 @@ C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\Amanda\bin\Release\Na
 C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\Amanda\obj\Release\ResolveAssemblyReference.cache
 C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\Amanda\obj\Release\Amanda.dll
 C:\Users\zeev\Documents\Visual Studio 2010\Projects\Amanda\Amanda\obj\Release\Amanda.pdb
+C:\Users\user4\Documents\GitHub\Amanda\Amanda\bin\Release\Amanda.dll
+C:\Users\user4\Documents\GitHub\Amanda\Amanda\bin\Release\Amanda.pdb
+C:\Users\user4\Documents\GitHub\Amanda\Amanda\bin\Release\Nancy.dll
+C:\Users\user4\Documents\GitHub\Amanda\Amanda\obj\Release\ResolveAssemblyReference.cache
+C:\Users\user4\Documents\GitHub\Amanda\Amanda\obj\Release\Amanda.dll
+C:\Users\user4\Documents\GitHub\Amanda\Amanda\obj\Release\Amanda.pdb
