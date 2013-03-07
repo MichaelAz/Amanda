@@ -57,7 +57,7 @@ namespace Amanda.Client
 
                     uriBuilder.Query = queryBuilder.ToString().TrimEnd('&');
 
-                    var res = client.DownloadString(uriBuilder.Uri);
+                    var res = Encoding.UTF8.GetString(client.DownloadData(uriBuilder.Uri));
 
                     if (res == String.Empty)
                     {
@@ -72,15 +72,7 @@ namespace Amanda.Client
                         else
                         {
                             var jss = new JavaScriptSerializer();
-
-                            try
-                            {
-                                result = Extensions.ToExpando(jss.Deserialize<dynamic>(res));
-                            }
-                            catch (Exception)
-                            {
-                                result = jss.Deserialize<List<dynamic>>(res).Select(e => Extensions.ToExpando(e)).ToList();
-                            }
+                            result = DeserializeObjectGraph(jss.Deserialize<dynamic>(res));
                         }
                     }
 
@@ -93,9 +85,8 @@ namespace Amanda.Client
                     {
                         dict.Add(provider.Parameters.ElementAt(i).Key, args[i]);
                     }
-
-                    var res = client.UploadString(serviceUri + provider.Route,
-                                                  (new JavaScriptSerializer()).Serialize(dict));
+                    
+                    var res = Encoding.UTF8.GetString(client.UploadData(serviceUri + provider.Route, Encoding.UTF8.GetBytes((new JavaScriptSerializer()).Serialize(dict))));
 
                     if (Type.GetType(provider.Result).IsBasic())
                     {
@@ -104,15 +95,7 @@ namespace Amanda.Client
                     else
                     {
                         var jss = new JavaScriptSerializer();
-
-                        try
-                        {
-                            result = Extensions.ToExpando(jss.Deserialize<dynamic>(res));
-                        }
-                        catch (Exception)
-                        {
-                            result = jss.Deserialize<List<dynamic>>(res).Select(e => Extensions.ToExpando(e)).ToList();
-                        }
+                        result = DeserializeObjectGraph(jss.Deserialize<dynamic>(res));
                     }
 
                     return true;
@@ -121,6 +104,29 @@ namespace Amanda.Client
 
             result = null;
             return false;
+        }
+
+        private static dynamic DeserializeObjectGraph(object graph)
+        {
+            var t = graph.GetType();
+
+            if (graph is IEnumerable<dynamic>)
+            {
+                var locGraph = graph as IEnumerable<dynamic>;
+                return locGraph.Select(x => DeserializeObjectGraph(x));
+            }
+            else if (graph is Dictionary<string, object>)
+            {
+                var locGraph = graph as Dictionary<string, object>;
+                return locGraph.ToExpando();
+            }
+            else
+            {
+                var exp = new ArgumentException();
+                exp.Data.Add("problem graph of type " + t, graph);
+
+                throw exp;
+            }
         }
     }
 }
